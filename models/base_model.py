@@ -4,6 +4,8 @@ import uuid
 from datetime import datetime
 from models import storage
 from sqlalchemy import Column, Integer, String, DateTime
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker, scoped_session, session, declarative_base
 import os
 from os import getenv
 
@@ -73,7 +75,7 @@ class BaseModel:
         my_dict['updated_at'] = self.updated_at.isoformat()
 
         # remove _sa_instance_state key only if exist
-        new_dict.pop('_sa_instance_state', None)
+        my_dict.pop('_sa_instance_state', None)
 
         return (my_dict)
 
