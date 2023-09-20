@@ -4,6 +4,8 @@ import uuid
 from datetime import datetime
 from models import storage
 from sqlalchemy import Column, Integer, String, DateTime
+import os
+from os import getenv
 
 time_frmt = "%Y-%m-%dT%H:%M:%S.%f"
 
