@@ -29,10 +29,10 @@ class BaseModel:
     it could handle both orm dbstorage or filestorage"""
 
     if getenv("HBNB_TYPE_STORAGE") == 'db':
-        id = Column(String(60), primary_key=true, unique=True, nullable=False)
-        created_at = column(DateTime, default=datetime.utcnow(),
+        id = Column(String(60), primary_key=True, unique=True, nullable=False)
+        created_at = Column(DateTime, default=datetime.utcnow(),
                             nullable=False)
-        updated_at = column(DateTime, default=datetime.utcnow(),
+        updated_at = Column(DateTime, default=datetime.utcnow(),
                             nullable=False)
 
     def __init__(self, *args, **kwargs):
@@ -49,12 +49,12 @@ class BaseModel:
                 if key == '__class__':
                     continue
                 setattr(self, key, val)
-                if type(self.created_at) is str:
-                    self.created_at = datetime.strptime(self.created_at,
-                                                        time_frmt)
-                if type(self.updated_at) is str:
-                    self.updated_at = datetime.strptime(self.updated_at,
-                                                        time_frmt)
+            if type(self.created_at) is str:
+                self.created_at = datetime.strptime(self.created_at,
+                                                    time_frmt)
+            if type(self.updated_at) is str:
+                self.updated_at = datetime.strptime(self.updated_at,
+                                                    time_frmt)
 
     def __str__(self):
         """Returns a string representation of the instance"""
