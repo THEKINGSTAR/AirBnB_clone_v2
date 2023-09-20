@@ -5,7 +5,8 @@ from datetime import datetime
 from models import storage
 from sqlalchemy import Column, Integer, String, DateTime
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, scoped_session, session, declarative_base
+from sqlalchemy.orm import sessionmaker, scoped_session, session
+from sqlalchemy.orm import declarative_base
 import os
 from os import getenv
 
