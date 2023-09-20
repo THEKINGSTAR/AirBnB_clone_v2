@@ -6,15 +6,29 @@ from models import storage
 from sqlalchemy import Column, Integer, String, DateTime
 
 time_frmt = "%Y-%m-%dT%H:%M:%S.%f"
-Base = declarative_base()
+
+if getenv("HBNB_TYPE_STORAGE") == 'db':
+    Base = declarative_base()
+
+else:  # if it is  afilestorage not db
+    # in python3 whether you explicitly write class MyClass(object) or
+    # just class MyClass, it's will be the same. as All classes
+    # automatically inherit from the object class by default
+    # so I am using this because other model will inherit base
+    # and I want them to inherit object instead of declarative_base()
+    Base = object
 
 
 class BaseModel:
-    """This is orm base class for all hbnb models"""
+    """This is base class for all hbnb models
+    it could handle both orm dbstorage or filestorage"""
 
-    id = Column(String(60), primary_key=true, unique=True, nullable=False)
-    created_at = column(DateTime, default=datetime.utcnow(), nullable=False)
-    updated_at = column(DateTime, default=datetime.utcnow(), nullable=False)
+    if getenv("HBNB_TYPE_STORAGE") == 'db':
+        id = Column(String(60), primary_key=true, unique=True, nullable=False)
+        created_at = column(DateTime, default=datetime.utcnow(),
+                            nullable=False)
+        updated_at = column(DateTime, default=datetime.utcnow(),
+                            nullable=False)
 
     def __init__(self, *args, **kwargs):
         """instance intialization function to
