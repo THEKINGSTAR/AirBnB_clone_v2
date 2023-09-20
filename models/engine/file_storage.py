@@ -8,9 +8,19 @@ class FileStorage:
     __file_path = 'file.json'
     __objects = {}
 
-    def all(self):
+    def all(self, cls=None):
         """Returns a dictionary of models currently in storage"""
-        return FileStorage.__objects
+        if cls is None:
+            return FileStorage.__objects
+
+        # if cls is not None then apply
+        # optional filter to get dict of object for one class
+        class_name = cls.__name__
+        cls_dict = {}
+        for key in self.__objects.keys():
+            if key.split('.')[0] == class_name:
+                cls_dict[key] = self.__objects[key]
+        return cls_dict
 
     def new(self, obj):
         """Adds new object to storage dictionary"""
@@ -45,6 +55,15 @@ class FileStorage:
             with open(FileStorage.__file_path, 'r') as f:
                 temp = json.load(f)
                 for key, val in temp.items():
-                        self.all()[key] = classes[val['__class__']](**val)
+                    self.all()[key] = classes[val['__class__']](**val)
+
         except FileNotFoundError:
             pass
+
+    def delete(self, obj=None):
+        """AirBnb v2 method to delete object from __objects, But
+        do nothing if object is None"""
+        if obj is not None:
+            key = "{}.{}".format(obj.__class__.__name__, str(obj.id))
+            del self.__objects[key]
+            self.save()
