@@ -137,11 +137,13 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
 
-        new_instance = HBNBCommand.classes[firstarg]()
-        storage.save()
+        base_attr = ('__class__', 'id', 'created_at', 'updated_at')
+        # new_instance = HBNBCommand.classes[firstarg]()
+        # storage.save()
+        obj_attrs = {}
 
-        if len(myargs) == 1:  # no params passed with a cls
-            print(new_instance.id)
+        # if len(myargs) == 1:  # no params passed with a cls
+        #    print(new_instance.id)
 
         if len(myargs) > 1:  # params are passed with a class
             # print("we have params")
@@ -167,24 +169,9 @@ class HBNBCommand(cmd.Cmd):
                     # or attr_val = match.group(1)
 
                     attr_val = attr_val_str.replace('_', ' ')
-
                     # implement escaped "
-                    
-                    # Define a pattern check if inside "
-                    # is escaped with a backslash \ or not
-                    pattern = r'^[^\s"]*(\\[\s"]*[^\s"]*)*$'
-
-                    # Check if string follow the requirement
-                    if re.match(pattern, attr_val):
-                        attr_val = attr_val_str.replace('\"', '"')
-                    else:  # found non escaped " case
-                        pass
-
-                elif attr_val[0] == '"':  # no match found
-                    # only leading " exist
-                    # print("## you forget to close double quotes##")
-                    pass
-
+                    attr_val = attr_val.replace('\\"', '"')
+                    cast = str
 
                 else:  # no leading " in attr_val
                     # then it could be int or float type
@@ -204,17 +191,25 @@ class HBNBCommand(cmd.Cmd):
                         cast = int
 
                 try:
-                    attr_val = cast(attr_val)
+                    if attr_val is not None:
+                        obj_attrs[attr_name] = cast(attr_val)
                 except Exception:  # casting Failed
                     pass
 
-                req_inst = f"{myargs[0]}.{new_instance.id}"
-                # create attribute
-                setattr(storage.all()[req_inst], attr_name, attr_val)
-                print(new_instance.id)
-                # storage.reload()
-                storage.save()
+            new_obj = HBNBCommand.classes[firstarg](**obj_attrs)
 
+            for key, val in obj_attrs.items():
+                if key not in base_attr:
+                    # create attribute
+                    setattr(new_obj, key, val)
+
+            new_obj.save()
+            print(new_obj.id)
+
+        else:  # no attrs
+            new_obj = HBNBCommand.classes[firstarg]()
+            new_obj.save()
+            print(new_obj.id)
 
     def help_create(self):
         """Help information for the create method"""

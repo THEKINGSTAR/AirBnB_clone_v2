@@ -4,11 +4,8 @@ import uuid
 from datetime import datetime
 from models import storage
 from sqlalchemy import Column, Integer, String, DateTime
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, scoped_session, session
-from sqlalchemy.orm import declarative_base
-import os
 from os import getenv
+from sqlalchemy.ext.declarative import declarative_base
 
 time_frmt = "%Y-%m-%dT%H:%M:%S.%f"
 
@@ -29,37 +26,35 @@ class BaseModel:
     it could handle both orm dbstorage or filestorage"""
 
     if getenv("HBNB_TYPE_STORAGE") == 'db':
-        id = Column(String(60), primary_key=True, unique=True, nullable=False)
-        created_at = Column(DateTime, default=datetime.utcnow(),
+        id = Column(String(60), primary_key=true, nullable=False)
+        created_at = column(DateTime, default=datetime.utcnow,
                             nullable=False)
-        updated_at = Column(DateTime, default=datetime.utcnow(),
+        updated_at = column(DateTime, default=datetime.utcnow,
                             nullable=False)
 
     def __init__(self, *args, **kwargs):
         """instance intialization function to
         create a new model"""
 
-        if not kwargs:
-            self.id = str(uuid.uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = datetime.now()
-
-        else:
-            for key, val in kwargs.items():
-                if key == '__class__':
-                    continue
-                setattr(self, key, val)
-                if type(self.created_at) is str:
-                    self.created_at = datetime.strptime(self.created_at,
-                                                        time_frmt)
-                if type(self.updated_at) is str:
-                    self.updated_at = datetime.strptime(self.updated_at,
-                                                        time_frmt)
+        self.id = str(uuid.uuid4())
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
+        
+        for key, val in kwargs.items():
+            if key == '__class__':
+                continue
+            setattr(self, key, val)
+            if type(self.created_at) is str:
+                self.created_at = datetime.strptime(self.created_at,
+                        time_frmt)
+            if type(self.updated_at) is str:
+                self.updated_at = datetime.strptime(self.updated_at,
+                        time_frmt)
 
     def __str__(self):
         """Returns a string representation of the instance"""
-        cls = (str(type(self)).split('.')[-1]).split('\'')[0]
-        return '[{}] ({}) {}'.format(cls, self.id, self.__dict__)
+        return '[{}] ({}) {}'.format(self.__class__.__name__, 
+                                     self.id, self.__dict__)
 
     def save(self):
         """Updates updated_at with current time when instance is changed"""
