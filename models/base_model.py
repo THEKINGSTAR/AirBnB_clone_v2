@@ -2,7 +2,7 @@
 """This module defines a base class for all models in our hbnb clone"""
 import uuid
 from datetime import datetime
-from models import storage
+import models
 from sqlalchemy import Column, Integer, String, DateTime
 from os import getenv
 from sqlalchemy.ext.declarative import declarative_base
@@ -26,10 +26,10 @@ class BaseModel:
     it could handle both orm dbstorage or filestorage"""
 
     if getenv("HBNB_TYPE_STORAGE") == 'db':
-        id = Column(String(60), primary_key=true, nullable=False)
-        created_at = column(DateTime, default=datetime.utcnow,
+        id = Column(String(60), primary_key=True, nullable=False)
+        created_at = Column(DateTime, default=datetime.utcnow,
                             nullable=False)
-        updated_at = column(DateTime, default=datetime.utcnow,
+        updated_at = Column(DateTime, default=datetime.utcnow,
                             nullable=False)
 
     def __init__(self, *args, **kwargs):
@@ -39,7 +39,7 @@ class BaseModel:
         self.id = str(uuid.uuid4())
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
-        
+        models.storage.new(self) 
         for key, val in kwargs.items():
             if key == '__class__':
                 continue
@@ -59,8 +59,8 @@ class BaseModel:
     def save(self):
         """Updates updated_at with current time when instance is changed"""
         self.updated_at = datetime.now()
-        storage.new(self)
-        storage.save()
+        models.storage.new(self)
+        models.storage.save()
 
     def to_dict(self):
         """Convert instance into dict format"""
@@ -79,4 +79,4 @@ class BaseModel:
         """ delete current instance from the storage (models.storage)
         by calling the method delete from FileStorage class
         we are using __init__ , So storage = FileStorage()"""
-        storage.delete()
+        models.storage.delete()

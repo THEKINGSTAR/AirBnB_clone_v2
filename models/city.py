@@ -8,8 +8,6 @@ from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String, ForeignKey
 from os import getenv
 from sqlalchemy.orm import relationship
-
-
 class City(BaseModel):
     """city Model class to define
     state ID and name columns or attributes
@@ -22,7 +20,7 @@ class City(BaseModel):
         # without importing the class model State
         # otherwise you will have to use import State
         # ForeignKey(State.id)
-        state_id = Column(String(60), ForeignKey(states.id), nullable=False)
+        state_id = Column(String(60), ForeignKey('states.id'), nullable=False)
 
         # task 8
         # if you removed single quote around 'Place' then
