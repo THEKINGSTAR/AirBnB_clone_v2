@@ -26,6 +26,8 @@ class Place(BaseModel, Base):
         price_by_night = Column(Integer, nullable=False, default=0)
         latitude = Column(Float, nullable=True)
         longitude = Column(Float, nullable=True)
+        reviews = relationship("Review", backref="place",
+                               cascade="all, delete, delete-orphan")
 
     else:
         city_id = ""
@@ -39,3 +41,16 @@ class Place(BaseModel, Base):
         latitude = 0.0
         longitude = 0.0
         amenity_ids = []
+
+    if getenv("HBNB_TYPE_STORAGE") != "db":
+        @property
+        def reviews(self):
+            """Getter attribute to return a list of Review instances
+            where place_id equals to the current Place.id for FileStorage"""
+            from models import storage
+            reviews_list = []
+            all_reviews = storage.all("Review")
+            for review in all_reviews.values():
+                if review.place_id == self.id:
+                    reviews_list.append(review)
+            return reviews_list
