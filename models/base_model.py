@@ -39,21 +39,21 @@ class BaseModel:
         self.id = str(uuid.uuid4())
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
-        models.storage.new(self) 
+        models.storage.new(self)
         for key, val in kwargs.items():
             if key == '__class__':
                 continue
             setattr(self, key, val)
             if type(self.created_at) is str:
                 self.created_at = datetime.strptime(self.created_at,
-                        time_frmt)
+                                                    time_frmt)
             if type(self.updated_at) is str:
                 self.updated_at = datetime.strptime(self.updated_at,
-                        time_frmt)
+                                                    time_frmt)
 
     def __str__(self):
         """Returns a string representation of the instance"""
-        return '[{}] ({}) {}'.format(self.__class__.__name__, 
+        return '[{}] ({}) {}'.format(self.__class__.__name__,
                                      self.id, self.__dict__)
 
     def save(self):
