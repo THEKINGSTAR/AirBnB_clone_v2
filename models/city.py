@@ -22,12 +22,9 @@ class City(BaseModel, Base):
         state_id = Column(String(60), ForeignKey("states.id"), nullable=False)
 
         # task 8
-        # if you removed single quote around 'Place' then
-        # you will have to import Place
-        # otherwise you don't need to import as you really
-        # just setting the relationship not using the module
-        # places = relationship(
-        #    "Place", backref="cities", cascade="all, delete, delete-orphan")
+        places = relationship(
+                'Place', backref="cities", cascade="all, delete, delete-orphan"
+            )
 
     else:  # filestorage
         state_id = ""

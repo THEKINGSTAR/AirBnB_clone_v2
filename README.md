@@ -5,20 +5,36 @@ Initial code of a project to build a clone of the AirBnB website. The previous s
 ---
 
 <center><h3>Repository Contents by Project Task</h3> </center>
-
+V1
 | Tasks | Files | Description |
 | ----- | ----- | ------ |
-| 0: Authors/README File | [AUTHORS](https://github.com/justinmajetich/AirBnB_clone/blob/dev/AUTHORS) | Project authors |
+| 0: Authors/README File | [AUTHORS](https://github.com/abdalmohsen-h/AirBnB_clone/blob/master/AUTHORS) | Project authors |
 | 1: Pep8 | N/A | All code is pep8 compliant|
-| 2: Unit Testing | [/tests](https://github.com/justinmajetich/AirBnB_clone/tree/dev/tests) | All class-defining modules are unittested |
-| 3. Make BaseModel | [/models/base_model.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/base_model.py) | Defines a parent class to be inherited by all model classes|
-| 4. Update BaseModel w/ kwargs | [/models/base_model.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/base_model.py) | Add functionality to recreate an instance of a class from a dictionary representation|
-| 5. Create FileStorage class | [/models/engine/file_storage.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/engine/file_storage.py) [/models/_ _init_ _.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/__init__.py) [/models/base_model.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/base_model.py) | Defines a class to manage persistent file storage system|
-| 6. Console 0.0.1 | [console.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/console.py) | Add basic functionality to console program, allowing it to quit, handle empty lines and ^D |
-| 7. Console 0.1 | [console.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/console.py) | Update the console with methods allowing the user to create, destroy, show, and update stored data |
-| 8. Create User class | [console.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/console.py) [/models/engine/file_storage.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/engine/file_storage.py) [/models/user.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/user.py) | Dynamically implements a user class |
-| 9. More Classes | [/models/user.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/user.py) [/models/place.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/place.py) [/models/city.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/city.py) [/models/amenity.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/amenity.py) [/models/state.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/state.py) [/models/review.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/review.py) | Dynamically implements more classes |
-| 10. Console 1.0 | [console.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/console.py) [/models/engine/file_storage.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/engine/file_storage.py) | Update the console and file storage system to work dynamically with all  classes update file storage |
+| 2: Unit Testing | [/tests](https://github.com/abdalmohsen-h/AirBnB_clone/tree/master/tests) | All class-defining modules are unittested |
+| 3. Make BaseModel | [/models/base_model.py](https://github.com/abdalmohsen-h/AirBnB_clone/blob/master/models/base_model.py) | Defines a parent class to be inherited by all model classes|
+| 4. Update BaseModel w/ kwargs | [/models/base_model.py](https://github.com/abdalmohsen-h/AirBnB_clone/blob/master/models/base_model.py) | Add functionality to recreate an instance of a class from a dictionary representation|
+| 5. Create FileStorage class | [/models/engine/file_storage.py](https://github.com/abdalmohsen-h/AirBnB_clone/blob/master/models/engine/file_storage.py) [/models/_ _init_ _.py](https://github.com/abdalmohsen-h/AirBnB_clone/blob/master/models/__init__.py) [/models/base_model.py](https://github.com/abdalmohsen-h/AirBnB_clone/blob/master/models/base_model.py) | Defines a class to manage persistent file storage system|
+| 6. Console 0.0.1 | [console.py](https://github.com/abdalmohsen-h/AirBnB_clone/blob/master/console.py) | Add basic functionality to console program, allowing it to quit, handle empty lines and ^D |
+| 7. Console 0.1 | [console.py](https://github.com/abdalmohsen-h/AirBnB_clone/blob/master/console.py) | Update the console with methods allowing the user to create, destroy, show, and update stored data |
+| 8. Create User class | [console.py](https://github.com/abdalmohsen-h/AirBnB_clone/blob/master/console.py) [/models/engine/file_storage.py](https://github.com/abdalmohsen-h/AirBnB_clone/blob/master/models/engine/file_storage.py) [/models/user.py](https://github.com/abdalmohsen-h/AirBnB_clone/blob/master/models/user.py) | Dynamically implements a user class |
+| 9. More Classes | [/models/user.py](https://github.com/abdalmohsen-h/AirBnB_clone/blob/master/models/user.py) [/models/place.py](https://github.com/abdalmohsen-h/AirBnB_clone/blob/master/models/place.py) [/models/city.py](https://github.com/abdalmohsen-h/AirBnB_clone/blob/master/models/city.py) [/models/amenity.py](https://github.com/abdalmohsen-h/AirBnB_clone/blob/master/models/amenity.py) [/models/state.py](https://github.com/abdalmohsen-h/AirBnB_clone/blob/master/models/state.py) [/models/review.py](https://github.com/abdalmohsen-h/AirBnB_clone/blob/master/models/review.py) | Dynamically implements more classes |
+| 10. Console 1.0 | [console.py](https://github.com/abdalmohsen-h/AirBnB_clone/blob/master/console.py) [/models/engine/file_storage.py](https://github.com/abdalmohsen-h/AirBnB_clone/blob/master/models/engine/file_storage.py) | Update the console and file storage system to work dynamically with all  classes update file storage |
+<br>
+<br>
+V2
+| Tasks | Files | Description |
+| ----- | ----- | ------ |
+| 0: Authors/README File | [AUTHORS](https://github.com/abdalmohsen-h/AirBnB_clone/blob/master/AUTHORS) | Project authors |
+| 1: Unit Testing and Pep8| [/tests](https://github.com/abdalmohsen-h/AirBnB_clone/tree/master/tests) | All class-defining modules are unittested |
+| 2. Console improvements| [/tests](https://github.com/abdalmohsen-h/AirBnB_clone/tree/master/tests) | All class-defining modules are unittested |
+| 3. MySQL setup development | [/models/base_model.py](https://github.com/abdalmohsen-h/AirBnB_clone/blob/master/models/base_model.py) | Defines a parent class to be inherited by all model classes|
+| 4. MySQL setup test | [/models/base_model.py](https://github.com/abdalmohsen-h/AirBnB_clone/blob/master/models/base_model.py) | Add functionality to recreate an instance of a class from a dictionary representation|
+| 5. Create method to Delete object from Storage class | [/models/engine/file_storage.py](https://github.com/abdalmohsen-h/AirBnB_clone/blob/master/models/engine/file_storage.py) [/models/_ _init_ _.py](https://github.com/abdalmohsen-h/AirBnB_clone/blob/master/models/__init__.py) [/models/base_model.py](https://github.com/abdalmohsen-h/AirBnB_clone/blob/master/models/base_model.py) | Defines a class to manage persistent file storage system|
+| 6. DBStorage - States and Cities | [console.py](https://github.com/abdalmohsen-h/AirBnB_clone/blob/master/console.py) | Add basic functionality to console program, allowing it to quit, handle empty lines and ^D |
+| 7. DBStorage - User | [console.py](https://github.com/abdalmohsen-h/AirBnB_clone/blob/master/console.py) | Update the console with methods allowing the user to create, destroy, show, and update stored data |
+| 8. DBStorage - Place | [console.py](https://github.com/abdalmohsen-h/AirBnB_clone/blob/master/console.py) [/models/engine/file_storage.py](https://github.com/abdalmohsen-h/AirBnB_clone/blob/master/models/engine/file_storage.py) [/models/user.py](https://github.com/abdalmohsen-h/AirBnB_clone/blob/master/models/user.py) | Dynamically implements a user class |
+| 9. DBStorage - Review | [/models/user.py](https://github.com/abdalmohsen-h/AirBnB_clone/blob/master/models/user.py) [/models/place.py](https://github.com/abdalmohsen-h/AirBnB_clone/blob/master/models/place.py) [/models/city.py](https://github.com/abdalmohsen-h/AirBnB_clone/blob/master/models/city.py) [/models/amenity.py](https://github.com/abdalmohsen-h/AirBnB_clone/blob/master/models/amenity.py) [/models/state.py](https://github.com/abdalmohsen-h/AirBnB_clone/blob/master/models/state.py) [/models/review.py](https://github.com/abdalmohsen-h/AirBnB_clone/blob/master/models/review.py) | Dynamically implements more classes |
+| 10. DBStorage - Amenity. and relations! | [console.py](https://github.com/abdalmohsen-h/AirBnB_clone/blob/master/console.py) [/models/engine/file_storage.py](https://github.com/abdalmohsen-h/AirBnB_clone/blob/master/models/engine/file_storage.py) | Update the console and file storage system to work dynamically with all  classes update file storage |
 <br>
 <br>
 <center> <h2>General Use</h2> </center>
