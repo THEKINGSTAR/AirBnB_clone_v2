@@ -6,15 +6,16 @@ from os import getenv
 from models.base_model import BaseModel, Base
 from models.review import Review
 from models.amenity import Amenity
-from sqlalchemy import Column, String, Integer, Float, ForeignKey 
+from sqlalchemy import Column, String, Integer, Float, ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql.schema import Table
 
 
 class Place(BaseModel, Base):
-    """ Place class (models/place.py) """
-    __tablename__ = 'places'
-    if getenv("HBNB_TYPE_STORAGE") == 'db':
+    """Place class (models/place.py)"""
+
+    __tablename__ = "places"
+    if getenv("HBNB_TYPE_STORAGE") == "db":
         pass
 
     else:

@@ -12,12 +12,14 @@ from os import getenv
 
 
 class State(BaseModel, Base):
-    """ State class """
-    __tablename__ = 'states'
-    if getenv("HBNB_TYPE_STORAGE") == 'db':
+    """State class"""
+
+    __tablename__ = "states"
+    if getenv("HBNB_TYPE_STORAGE") == "db":
         name = Column(String(128), nullable=False, unique=True)
-        cities = relationship('City', backref='state',
-                              cascade='all, delete, delete-orphan')
+        cities = relationship(
+            "City", backref="state", cascade="all, delete, delete-orphan"
+        )
     else:
         name = ""
 
@@ -25,7 +27,8 @@ class State(BaseModel, Base):
         """initializes state"""
         super().__init__(*args, **kwargs)
 
-    if getenv('HBNB_TYPE_STORAGE') != 'db':
+    if getenv("HBNB_TYPE_STORAGE") != "db":
+
         @property  # cities getter attribute
         def cities(self):
             """if filestorage this define relationship
@@ -33,6 +36,7 @@ class State(BaseModel, Base):
             returns the list of City instances with state_id
             equals to the current State.id"""
             from models import storage
+
             state_cities = []
             all_cities = storage.all(City)
             for city in all_cities.values():
