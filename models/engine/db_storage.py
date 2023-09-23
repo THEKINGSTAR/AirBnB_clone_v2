@@ -53,12 +53,17 @@ class DBStorage:
         results = {}
 
         if cls is not None:
-            query = self.__session.query(cls)
+            query = self.__session.query(cls).all()
+            for obj in query:
+                key = "{}.{}".format(type(obj).__name__, obj.id)
+                results[key] = obj
         else:
-            query = self.__session.query(*classes)
-        for obj in query.all():
-            key = "{}.{}".format(type(obj).__name__, obj.id)
-            results[key] = obj
+            for clsname in classes:
+                query = self.__session.query(clsname).all()
+                for obj in query:
+                    key = "{}.{}".format(type(obj).__name__, obj.id)
+                    results[key] = obj
+
         return results
 
     def new(self, obj):

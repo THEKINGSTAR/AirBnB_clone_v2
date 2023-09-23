@@ -1,10 +1,15 @@
 #!/usr/bin/python3
-""" Review module for the HBNB project """
-from models.base_model import BaseModel
+""" Module for Review Model class for the HBNB project """
+from models.base_model import BaseModel, Base
+from os import getenv
 
-
-class Review(BaseModel):
+class Review(BaseModel, Base):
     """ Review classto store review information """
-    place_id = ""
-    user_id = ""
-    text = ""
+    __tablename__ = "reviews"
+    if getenv("HBNB_TYPE_STORAGE") == 'db':
+        pass
+
+    else:
+        place_id = ""
+        user_id = ""
+        text = ""
