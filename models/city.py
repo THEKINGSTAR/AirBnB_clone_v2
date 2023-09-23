@@ -20,7 +20,6 @@ class City(BaseModel, Base):
     if getenv("HBNB_TYPE_STORAGE") == "db":
         name = Column(String(128), nullable=False, unique=True)
         state_id = Column(String(60), ForeignKey("states.id"), nullable=False)
-
         # task 8
         places = relationship(
                 'Place', backref="cities", cascade="all, delete, delete-orphan"
