@@ -8,6 +8,8 @@ from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String, ForeignKey
 from os import getenv
 from sqlalchemy.orm import relationship
+
+
 class City(BaseModel):
     """city Model class to define
     state ID and name columns or attributes
