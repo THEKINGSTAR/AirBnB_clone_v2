@@ -12,7 +12,7 @@ sudo mkdir /data/web_static/
 sudo mkdir /data/web_static/releases/
 sudo mkdir /data/web_static/shared/
 sudo mkdir /data/web_static/releases/test/
-sudo touch /data/web_static/releases/test/index.html
+echo "PREPARING THE WEB SERVER" | sudo tee -a /data/web_static/releases/test/index.htm
 
 target='/data/web_static/releases/test/'
 link='/data/web_static/current'
