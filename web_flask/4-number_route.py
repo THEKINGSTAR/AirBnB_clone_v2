@@ -33,9 +33,11 @@ def Python(text="is cool"):
 
 @app.route("/number/<n>", methods=['GET'], strict_slashes=False)
 def Number(n):
-    n = int(n)
-    if (type(n) == int):
+    try:
+        n = int(n)
         return (f"{escape(n)} is a number”")
+    except exeption:
+        return (None)
 
 
 if __name__ == '__main__':
