@@ -10,16 +10,19 @@ app = Flask(__name__)
 
 @app.route("/", methods=['GET'], strict_slashes=False)
 def hello_hbnb():
+    """display “Hello HBNB!”"""
     return ("Hello HBNB!")
 
 
 @app.route("/hbnb", methods=['GET'], strict_slashes=False)
 def hbnb():
+    """display “HBNB”"""
     return ("HBNB")
 
 
 @app.route("/c/<text>", methods=['GET'], strict_slashes=False)
 def txt(text):
+    """display “C ”, followed by the value of the text variable"""
     text = text.replace("_", " ")
     return (f"C {escape(text)}")
 
@@ -27,12 +30,14 @@ def txt(text):
 @app.route("/python/", methods=['GET'], strict_slashes=False)
 @app.route("/python/<text>", methods=['GET'], strict_slashes=False)
 def Python(text="is cool"):
+    """display “Python ”, followed by the value of the text variable"""
     text = text.replace("_", " ")
     return (f"Python {escape(text)}")
 
 
-@app.route("/number/<n>", methods=['GET'], strict_slashes=False)
+@app.route("/number/<int:n>", methods=['GET'], strict_slashes=False)
 def Number(n):
+    """display “n is a number” only if n is an integer"""
     try:
         n = int(n)
         return (f"{escape(n)} is a number”")
