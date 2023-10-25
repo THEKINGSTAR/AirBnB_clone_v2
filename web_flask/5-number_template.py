@@ -40,7 +40,7 @@ def Number(n):
     """display “n is a number” only if n is an integer"""
     try:
         n = int(n)
-        return (f"{escape(n)} is a number")
+        return (f"{escape(n)} is a number”")
     except exeption:
         return (None)
 
