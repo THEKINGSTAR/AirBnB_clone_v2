@@ -3,6 +3,7 @@
 Script that starts a Flask web application:
 """
 from flask import Flask
+from flask import render_template
 from markupsafe import escape
 
 app = Flask(__name__)
@@ -40,8 +41,18 @@ def Number(n):
     """display “n is a number” only if n is an integer"""
     try:
         n = int(n)
-        return (f"{escape(n)} is a number”")
-    except exeption:
+        return (f"{escape(n)} is a number")
+    except Exception:
+        return (None)
+
+
+@app.route("/number_template/<int:n>", methods=['GET'], strict_slashes=False)
+def Html_Number(n):
+    """display a HTML page only if n is an integer"""
+    try:
+        n = int(n)
+        return render_template('5-number.html', value=f"Number: {escape(n)}")
+    except Exception:
         return (None)
 
 
