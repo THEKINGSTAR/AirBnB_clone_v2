@@ -73,4 +73,4 @@ class FileStorage:
         Add a public method
         call method for deserializing the JSON file to objects
         """
-        FileStorage.reload()
+        self.reload()

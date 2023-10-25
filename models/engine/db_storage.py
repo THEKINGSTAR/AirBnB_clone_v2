@@ -107,4 +107,4 @@ class DBStorage:
         """
         Close the current session
         """
-        DBStorage.__session.remove()
+        self.__session.remove()
