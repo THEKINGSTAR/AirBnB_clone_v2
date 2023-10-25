@@ -35,6 +35,7 @@ class State(BaseModel, Base):
             between city and state
             returns the list of City instances with state_id
             equals to the current State.id"""
+            from models.city import City
             from models import storage
 
             state_cities = []
